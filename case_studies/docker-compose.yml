@@ -1,0 +1,37 @@
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=Mysql@cs@123
+      - MYSQL_DATABASE=django-case-studies
+      - MYSQL_USER=mohit_joshi
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql-data-volm:/var/lib/mysql
+    networks:
+      - case_studies
+    
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - C:/Users/Coditas/Documents/django-case-study/case_studies:/app
+    ports:
+      - 8000:8000
+    environment:
+      - DB_USER=root
+      - DB_PASSWORD=Mysql@cs@123
+    command: ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+    depends_on:
+      - mysql
+    networks:
+      - case_studies
+
+
+networks:
+  case_studies:
+
+volumes:
+  mysql-data-volm:

@@ -1,0 +1,6 @@
+/demo/*
+/case_studies/stocks/__pycache__/*
+/case_studies/case_studies/__pycache__/*
+/case_studies/stocks/utils/__pycache__/*
+/case_studies/stocks/migrations/__pycache__/*
+/case_studies/stocks/constants/__pycache__/*
